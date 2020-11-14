@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Temperature Conversion Application</title>
+
+</head>
+
+<body>
+
+<main role="main" class="container">
+
+	<div class="starter-template">
+		<h1>Weather Report</h1>
+	</div>
+
+</main>
+<!-- /.container -->
+
+<table>
+	<thead>
+	<tr>
+		<th> Celsius </th>
+		<th> Fahrenheit </th>
+
+	</tr>
+	</thead>
+	<tbody>
+
+<!--	<tr th:each="temperature : ${temperatures}">
+		<td><span th:text="${temperature.celsius}"> Celsius </span></td>
+		<td><span th:text="${temperature.fahrenheit}"> Fahrenheit </span></td>
+	</tr> -->
+
+<tr th:each="temperature : ${temperatures}">
+
+	</tbody>
+</table>
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
