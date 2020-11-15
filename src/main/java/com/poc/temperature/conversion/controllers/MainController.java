@@ -1,11 +1,11 @@
-package net.codejava.controllers;
+package com.poc.temperature.conversion.controllers;
 
 import java.util.Arrays;
 import java.util.List;
 
-import net.codejava.models.Temperature;
-import net.codejava.models.TemperatureResponse;
-import net.codejava.service.TemperatureConversionService;
+import com.poc.temperature.conversion.models.Temperature;
+import com.poc.temperature.conversion.models.TemperatureResponse;
+import com.poc.temperature.conversion.service.TemperatureConversionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

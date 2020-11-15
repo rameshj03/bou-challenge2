@@ -1,4 +1,4 @@
-package net.codejava.models;
+package com.poc.temperature.conversion.models;
 
 public class TemperatureResponse {
 

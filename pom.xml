@@ -12,11 +12,10 @@
 	<artifactId>SpringBootForm</artifactId>
 	<version>1.0</version>
 	<name>TemperatureConversionApplication</name>
-	<description>Form handling with Spring Boot and Thymeleaf</description>
+	<description>TemperatureConversionApplication</description>
 
 	<properties>
-		<java.version>1.8</java.version>
-			<start-class>net.codejava.SpringBootFormApplication</start-class>
+		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>

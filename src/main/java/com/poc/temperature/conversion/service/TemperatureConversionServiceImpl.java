@@ -1,7 +1,7 @@
-package net.codejava.service;
+package com.poc.temperature.conversion.service;
 
-import net.codejava.models.Temperature;
-import net.codejava.models.TemperatureResponse;
+import com.poc.temperature.conversion.models.Temperature;
+import com.poc.temperature.conversion.models.TemperatureResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;

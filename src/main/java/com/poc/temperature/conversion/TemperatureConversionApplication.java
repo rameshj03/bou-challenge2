@@ -1,13 +1,13 @@
-package net.codejava;
+package com.poc.temperature.conversion;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootFormApplication {
+public class TemperatureConversionApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootFormApplication.class, args);
+		SpringApplication.run(TemperatureConversionApplication.class, args);
 	}
 
 }
