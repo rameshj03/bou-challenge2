@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Temperature Conversion Application</title>
+	<style type="text/css">
+	label {
+		display: inline-block;
+		width: 200px;
+		margin: 5px;
+		text-align: left;
+	}
+	input[type=text], input[type=password], select {
+		display: inline-block;
+		width: 200px;
+	}
+	input[type=radio] {
+		margin-left: 45px;
+	}
+	input[type=checkbox] {
+		margin-right: 190px;
+	}
+	button {
+		padding: 5px;
+		margin: 10px;
+	}
+</style>
+</head>
+
+<body>
+<div align="center">
+<main role="main" class="container">
+
+	<div class="starter-template">
+		<h1>Temperature Conversion</h1>
+	</div>
+
+</main>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th> Celsius </th>
+            <th> Fahrenheit </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><span th:text="${temperatures.Celsius}"> Celsius </span></td>
+            <td><span th:text="${temperatures.Fahrenheit}"> Fahrenheit </span></td>
+        </tr>
+        </tbody>
+    </table>
+
+	<!-- <span th:text="${temperatures.Celsius}"> Celsius </span>
+    <span th:text="${temperatures.Fahrenheit}"> Fahrenheit </span>  -->
+</div>
+<!-- <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script> -->
+</body>
+</html>

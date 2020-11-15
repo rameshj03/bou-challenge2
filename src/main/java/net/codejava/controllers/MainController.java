@@ -27,16 +27,15 @@ public class MainController {
 		List<String> listProperty = Arrays.asList("Celsius", "Fahrenheit");
 		model.addAttribute("listProperty", listProperty);
 		
-		return "register_form";
+		return "convert";
 	}
 	
 	@PostMapping("/convert")
-//	public String doConvert(Model temperature) {
 	public String doConvert(@ModelAttribute("temperature") Temperature temperature, Model model) {
 		System.out.println("Temperature: " + temperature.toString());
-		TemperatureResponse listTemperatureResponse = temperatureConversionService.getConvertedTemperatureValues((Temperature) temperature);
+		TemperatureResponse listTemperatureResponse = temperatureConversionService.getConvertedTemperatureValues(temperature);
 		System.out.println(listTemperatureResponse.toString());
 		model.addAttribute("temperatures", listTemperatureResponse);
-		return "register_success";
+		return "result";
 	}
 }

@@ -1,10 +1,5 @@
 package net.codejava.models;
 
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.xml.bind.annotation.XmlElement;
-
-@ResponseBody
 public class Temperature {
 
 	private String property;
@@ -24,34 +19,6 @@ public class Temperature {
 
 	public void setProperty(String property) {
 		this.property = property;
-	}
-
-	private String celsius;
-
-	private String fahrenheit;
-
-	@XmlElement
-	public String getCelsius() {
-		return celsius;
-	}
-
-	public void setCelsius(String celsius) {
-		this.celsius = celsius;
-	}
-
-	@XmlElement
-	public String getFahrenheit() {
-		return fahrenheit;
-	}
-
-	public void setFahrenheit(String fahrenheit) {
-		this.fahrenheit = fahrenheit;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Temperature [val=" + val + ", property=" + property + "]";
 	}
 
 }

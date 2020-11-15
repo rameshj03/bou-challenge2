@@ -24,70 +24,6 @@ public class TemperatureConversionServiceImpl implements TemperatureConversionSe
     @Value("${temperature.api.base.uri}")
     private String restURI;
 
-    /*
-    @Autowired
-    CityDaoImpl cityDao;
-
-
-    SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
-
-    @Autowired
-    WeatherDaoImpl weatherDao;
-
-    private List<City> cities;
-
-    @PostConstruct
-    public void setUpConfigs() {
-        cities = cityDao.findAll();
-    }
-
-    public List<Weather> getWeatherRecords() {
-
-        //check on database
-        long epoch = System.currentTimeMillis()/1000;
-        System.out.println("Epoch time: " + epoch);
-
-        Date date = new Date();
-        date.setHours(11);
-        date.setMinutes(59);
-        date.setSeconds(59);
-
-        List<Temperature> weatherReports = cities.stream().map(city -> {
-
-            Weather weatherItem = getFromDB(city.getLabel(), df.format(date));
-            
-            if(weatherItem==null){
-                String req = "https://api.darksky.net/forecast/2e6f774a44eeca2779413188801c6180/" + city.getLat() + "," + city.getLongt() + "," + epoch + "?exclude=minutely,flags,hourly,currently";
-
-                System.out.println(req);
-
-                weatherItem = restTemplate.getForObject(req, Weather.class);
-
-                weatherItem.setPlaceLabel(city.getLabel());
-                weatherItem.setDate(df.format(date));
-                weatherDao.save(weatherItem);
-            }
-
-            return weatherItem;
-        }).collect(Collectors.toList());
-
-        return weatherReports;
-    }
-
-
-    private Weather getFromDB(String location, String date){
-
-        List<Weather> weatherList = weatherDao.findByPlaceLabelAndDate(location, date);
-
-        if(weatherList==null || weatherList.isEmpty()){
-            return null;
-        }
-        else{
-            return weatherList.get(0);
-        }
-
-    } */
-
     public TemperatureResponse getConvertedTemperatureValues(Temperature temperature) {
 
 
@@ -100,13 +36,7 @@ public class TemperatureConversionServiceImpl implements TemperatureConversionSe
         uriVariables.add("property", temperature.getProperty());
         uriVariables.add("val", temperature.getValue());
 
-//        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(env.getProperty(Constants.API_BASE_URL))
-//                .queryParams(uriVariables);
-
-
         HttpEntity<?> entity = new HttpEntity<>(uriVariables,headers);
-
-//        https://www.q88.com/WS/Q88WSInternal.asmx/ConvertTemperature?property=Celsius&val=96
 
         String req = "https://www.q88.com/WS/Q88WSInternal.asmx/ConvertTemperature?property=" + temperature.getProperty() + "&val=" + temperature.getValue();
 
@@ -120,20 +50,13 @@ public class TemperatureConversionServiceImpl implements TemperatureConversionSe
         Object temperatureResponse = restTemplate.postForObject("https://www.q88.com/WS/Q88WSInternal.asmx/ConvertTemperature", entity,Object.class);
 
         System.out.println(temperatureResponse);
-//        resValues =  temperatureResponse.getBody();
 
-//        HashMap map = temperatureResponse.getBody();
        Map<String, String> tempAPIReponse = (Map)temperatureResponse ;
 
 
-TemperatureResponse resp = new TemperatureResponse();
+      TemperatureResponse resp = new TemperatureResponse();
        resp.setCelsius(tempAPIReponse.get("Celsius"));
        resp.setFahrenheit(tempAPIReponse.get("Fahrenheit"));
-
-
-        List<String> convertedValues  = new ArrayList();
-//        convertedValues.add((String) resValues.get("Celsius"));
-//        convertedValues.add((String) resValues.get("Fahrenheit"));
 
         return resp;
     }
