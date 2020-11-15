@@ -34,7 +34,7 @@ public class MainController {
 //	public String doConvert(Model temperature) {
 	public String doConvert(@ModelAttribute("temperature") Temperature temperature, Model model) {
 		System.out.println("Temperature: " + temperature.toString());
-			List<String> listTemperatureResponse = temperatureConversionService.getConvertedTemperatureValues((Temperature) temperature);
+		TemperatureResponse listTemperatureResponse = temperatureConversionService.getConvertedTemperatureValues((Temperature) temperature);
 		System.out.println(listTemperatureResponse.toString());
 		model.addAttribute("temperatures", listTemperatureResponse);
 		return "register_success";

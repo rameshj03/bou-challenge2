@@ -1,31 +1,54 @@
 package net.codejava.models;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement (namespace="urn:TemperatureConversion", name="TemperatureConversion")
+/*
+@XmlRootElement(name = "user")
+public class User {
+
+    public User(){
+    }
+    private long id;
+    private String name;
+    private Date registrationDate;
+
+    @XmlAttribute(name="name")
+    public String getName() {
+        return name;
+    }
+
+}
+
+*/
+
+
+
+
+@XmlRootElement ( namespace="urn:TemperatureConversion", name="TemperatureConversion")
 public class TemperatureResponse {
 
-    private String celsius;
-
-    private String fahrenheit;
+    @XmlElement
+    private String Celsius;
 
     @XmlElement
+    private String Fahrenheit;
+
+
     public String getCelsius() {
-        return celsius;
+        return Celsius;
     }
 
     public void setCelsius(String celsius) {
-        this.celsius = celsius;
+        Celsius = celsius;
     }
 
-    @XmlElement
+
     public String getFahrenheit() {
-        return fahrenheit;
+        return Fahrenheit;
     }
 
     public void setFahrenheit(String fahrenheit) {
-        this.fahrenheit = fahrenheit;
+        Fahrenheit = fahrenheit;
     }
-
-
 }

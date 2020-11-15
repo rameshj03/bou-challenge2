@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TemperatureConversionService {
 
-   public List<String> getConvertedTemperatureValues(Temperature temperature);
+   public TemperatureResponse getConvertedTemperatureValues(Temperature temperature);
 
     }
 

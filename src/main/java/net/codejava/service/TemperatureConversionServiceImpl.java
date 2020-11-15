@@ -1,6 +1,7 @@
 package net.codejava.service;
 
 import net.codejava.models.Temperature;
+import net.codejava.models.TemperatureResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -10,10 +11,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class TemperatureConversionServiceImpl implements TemperatureConversionService {
@@ -90,7 +88,7 @@ public class TemperatureConversionServiceImpl implements TemperatureConversionSe
 
     } */
 
-    public List<String> getConvertedTemperatureValues(Temperature temperature) {
+    public TemperatureResponse getConvertedTemperatureValues(Temperature temperature) {
 
 
         System.out.println("Property: " + temperature.getProperty() + " and Value: " + temperature.getValue());
@@ -117,19 +115,26 @@ public class TemperatureConversionServiceImpl implements TemperatureConversionSe
 //        TemperatureResponse temperatureResponse = restTemplate.getForObject(req, TemperatureResponse.class);
 
 //        ResponseEntity<TemperatureResponse> temperatureResponse = restTemplate.exchange("https://www.q88.com/WS/Q88WSInternal.asmx/ConvertTemperature", HttpMethod.POST, entity, TemperatureResponse.class);
-        ResponseEntity<Temperature> temperatureResponse = restTemplate.exchange("https://www.q88.com/WS/Q88WSInternal.asmx/ConvertTemperature?property=" + temperature.getProperty() + "&val=" + temperature.getValue(), HttpMethod.GET,entity, Temperature.class);
+//        ResponseEntity<TemperatureResponse> temperatureResponse = restTemplate.exchange("https://www.q88.com/WS/Q88WSInternal.asmx/ConvertTemperature?property=" + temperature.getProperty() + "&val=" + temperature.getValue(), HttpMethod.GET,entity, TemperatureResponse.class);
 
-        System.out.println(temperatureResponse.getBody());
+        Object temperatureResponse = restTemplate.postForObject("https://www.q88.com/WS/Q88WSInternal.asmx/ConvertTemperature", entity,Object.class);
+
+        System.out.println(temperatureResponse);
 //        resValues =  temperatureResponse.getBody();
 
 //        HashMap map = temperatureResponse.getBody();
+       Map<String, String> tempAPIReponse = (Map)temperatureResponse ;
 
+
+TemperatureResponse resp = new TemperatureResponse();
+       resp.setCelsius(tempAPIReponse.get("Celsius"));
+       resp.setFahrenheit(tempAPIReponse.get("Fahrenheit"));
 
 
         List<String> convertedValues  = new ArrayList();
 //        convertedValues.add((String) resValues.get("Celsius"));
 //        convertedValues.add((String) resValues.get("Fahrenheit"));
 
-        return convertedValues;
+        return resp;
     }
 }

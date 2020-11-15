@@ -19,25 +19,14 @@
 </main>
 <!-- /.container -->
 
-<table>
-	<thead>
-	<tr>
-		<th> Celsius </th>
-		<th> Fahrenheit </th>
-
-	</tr>
-	</thead>
-	<tbody>
 
 <!--	<tr th:each="temperature : ${temperatures}">
 		<td><span th:text="${temperature.celsius}"> Celsius </span></td>
 		<td><span th:text="${temperature.fahrenheit}"> Fahrenheit </span></td>
 	</tr> -->
 
-<tr th:each="temperature : ${temperatures}">
-
-	</tbody>
-</table>
+	<span th:text="${temperatures.Celsius}"></span>
+    <span th:text="${temperatures.Fahrenheit}"></span>
 
 <script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 </body>
