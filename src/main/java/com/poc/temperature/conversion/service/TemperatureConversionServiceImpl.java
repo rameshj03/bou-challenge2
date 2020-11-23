@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.*;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -24,6 +25,7 @@ public class TemperatureConversionServiceImpl implements TemperatureConversionSe
     @Value("${temperature.api.base.uri}")
     private String restURI;
 
+    @Async
     public TemperatureResponse getConvertedTemperatureValues(Temperature temperature) {
 
 
@@ -57,6 +59,9 @@ public class TemperatureConversionServiceImpl implements TemperatureConversionSe
       TemperatureResponse resp = new TemperatureResponse();
        resp.setCelsius(tempAPIReponse.get("Celsius"));
        resp.setFahrenheit(tempAPIReponse.get("Fahrenheit"));
+
+        System.out.println("Celsius:" + resp.getCelsius());
+        System.out.println("Fahrenheit:" + resp.getFahrenheit());
 
         return resp;
     }
